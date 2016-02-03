@@ -3,7 +3,7 @@ $(function() {
 	function deplace()
 	{
 
-		// Deplacement et apparation de la voiture rouge :
+		// Deplacement et apparation de la voiture jaune :
 
 		$('#vj').animate({top: '+=600'}, 2500, 'linear', function(){
 
@@ -27,7 +27,7 @@ $(function() {
 
 	  // On relance la fonction une fois que le deplacement est fini :
 	  function(){
-	    $('.fond').css('top', 0);
+	    $('.fond').css('top', -360);
 	    deplace();
 	  });
 	}
@@ -54,7 +54,7 @@ $(function() {
 	{
 	  vrX = parseInt($('#vr').css('left'));
 	  vjX = parseInt($('#vj').css('left'));
-	  vrY = 10;
+	  vrY = 390;
 	  vjY = parseInt($('#vj').css('top'));
 	  if (((vrX > vjX) && (vrX < (vjX+66)) && (vrY > (vjY+120)) && (vrY < (vjY+150)) &&(ok == 1)) || ((vrX > vjX) && (vrX < (vjX+66)) && (vrY > (vjY+120)) && (vrY < (vjY+150)) && (ok == 1)))
 	  {
