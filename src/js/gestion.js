@@ -5,13 +5,13 @@ $(function() {
 
 		// Deplacement et apparation de la voiture rouge :
 
-		$('#vr').animate({top: '-=600'}, 2500, 'linear', function(){
+		$('#vj').animate({top: '+=600'}, 2500, 'linear', function(){
 
-	    var vrX = Math.floor(Math.random()*194)+70;
-	    var vrY = 400;
+	    var vjX = Math.floor(Math.random()*194)+70;
+	    var vjY = 0;
 
-	    $('#vr').css('top',vrY);
-	    $('#vr').css('left',vrX);
+	    $('#vj').css('top',vjY);
+	    $('#vj').css('left',vjX);
 
 	    ok = 1;
 
@@ -19,7 +19,7 @@ $(function() {
 
 		// Animation du fond :
 	  $('.fond').animate({
-	    top: '-=360'
+	    top: '+=360'
 	  },
 	  1000, //Temps du deplacement
 	  'linear', // Mode de deplacement
@@ -32,30 +32,30 @@ $(function() {
 	  });
 	}
 
-	// Ajout evenement pour faire bouger la voiture jaune a l'aide des touches droite et gauche :
+	// Ajout evenement pour faire bouger la voiture rouge a l'aide des touches droite et gauche :
 	$(document).keydown(function(e){
 		if (e.which == 39)
 		{
-		  vjX = parseInt($('#vj').css('left'));
-		  if (vjX < 280)
-		    $('#vj').css('left', vjX+30);
+		  vrX = parseInt($('#vr').css('left'));
+		  if (vrX < 280)
+		    $('#vr').css('left', vrX+30);
 		}
 
 		if (e.which == 37)
 		{
-		  vjX = parseInt($('#vj').css('left'));
-		  if (vjX > 70)
-		    $('#vj').css('left', vjX-30);
+		  vrX = parseInt($('#vr').css('left'));
+		  if (vrX > 70)
+		    $('#vr').css('left', vrX-30);
 		}
 	});
 
 	// Fonction pour surveiller la collision entre les deux voitures :
 	function collision()
 	{
-	  vjX = parseInt($('#vj').css('left'));
 	  vrX = parseInt($('#vr').css('left'));
-	  vjY = 10;
-	  vrY = parseInt($('#vr').css('top'));
+	  vjX = parseInt($('#vj').css('left'));
+	  vrY = 10;
+	  vjY = parseInt($('#vj').css('top'));
 	  if (((vrX > vjX) && (vrX < (vjX+66)) && (vrY > (vjY+120)) && (vrY < (vjY+150)) &&(ok == 1)) || ((vrX > vjX) && (vrX < (vjX+66)) && (vrY > (vjY+120)) && (vrY < (vjY+150)) && (ok == 1)))
 	  {
 	    collision = parseInt($('#info').text()) + 1;
