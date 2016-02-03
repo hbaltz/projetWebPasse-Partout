@@ -44,8 +44,7 @@
 #mur.porte{
 	width: 0px;
 	height: 10px;
-	z-index: 100;
-	position: absolute;
+	z-index: 110;
 	top: 10px;
 	left: 200px;
 	background-color: white;

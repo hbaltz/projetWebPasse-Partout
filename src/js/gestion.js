@@ -15,7 +15,7 @@ $(function() {
 	function obstacle(){
 
 		//Déplacement et apparation des murs :
-		$('#mur').animate({top: '+='+vam}, 2500, 'linear', function(){
+		$('#mur').animate({top: '+=' + vam}, 2500, 'linear', function(){
 
 			var porteW = Math.floor(Math.random()*tap);
 
@@ -23,9 +23,6 @@ $(function() {
 			var porteY = 0;
 
 			$('#mur').css('top', pom);
-
-			$('#porte').css('top',porteX);
-			$('#porte').css('left',porteY);
 
 			$('#porte').css('width',porteW);
 
@@ -56,13 +53,13 @@ $(function() {
 			if (e.which == 39){
 				pptX = parseInt($('#ppt').css('left'));
 				if (pptX < tap)
-				$('#ppt').css('left', pptX+tcur);
+				$('#ppt').css('left', pptX + tcur);
 			}
 
 			if (e.which == 37){
 				pptX = parseInt($('#ppt').css('left'));
 				if (pptX > hdj)
-				$('#ppt').css('left', pptX-tcur);
+				$('#ppt').css('left', pptX - tcur);
 			}
 	});
 
