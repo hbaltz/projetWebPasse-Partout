@@ -7,7 +7,7 @@ $(function() {
 
 	$('#cle').animate({top: '+=600'}, 2500, 'linear', function(){
 
-	var cleX = Math.floor(Math.random()*200)+20;
+	var cleX = Math.floor(Math.random()*320)+40;
 	var cleY = 0;
 
 	$('#cle').css('top',cleY);
