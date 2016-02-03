@@ -1,10 +1,12 @@
 // Variables globales :
 
 var vam = 600; // Vitesse de defilement des murs
-var tap = 320; // Taille des portes 
-var pop = 400; // Aide au positionnement des portes
+var tap = 120; // Taille des portes maximales
+var pm = 250; // Aide au positionnement des portes
+var pop = 400; // Aide au positionnement des murs
 var vdf = 360; // Vitesse de defilement du fond
 var hdj = 60; // Taille en pixel en dehors de la taille du jeu
+var zdj = 320; // Taille en pixel en dehors de la taille du jeu
 var tcur = 20; // Taille en px du curseur
 var pom = -10; // Position du mur par défaut
 
@@ -17,15 +19,14 @@ $(function() {
 		//Déplacement et apparation des murs :
 		$('#mur').animate({top: '+=' + vam}, 2500, 'linear', function(){
 
-			var porteW = Math.floor(Math.random()*tap);
+			var porteW = Math.floor(Math.random()*tap)+20;
 
-			var porteX = Math.floor(Math.random()*(pop-porteW));
-			var porteY = 0;
+			var porteX = Math.floor(Math.random()*pm);
 
-			$('#mur').css('top', pom);
+			$('#mur').css('top', 0);
 
 			$('#porte').css('width',porteW);
-			$('#porte').css('margin-left',150);
+			$('#porte').css('margin-left',porteX);
 
 			ok = 1;
 
@@ -53,7 +54,7 @@ $(function() {
 		$(document).keydown(function(e){
 			if (e.which == 39){
 				pptX = parseInt($('#ppt').css('left'));
-				if (pptX < tap)
+				if (pptX < zdj)
 				$('#ppt').css('left', pptX + tcur);
 			}
 
