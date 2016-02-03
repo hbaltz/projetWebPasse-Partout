@@ -5,13 +5,13 @@ $(function() {
 
 	// Deplacement et apparation de la voiture jaune :
 
-	$('#vj').animate({top: '+=600'}, 2500, 'linear', function(){
+	$('#cle').animate({top: '+=600'}, 2500, 'linear', function(){
 
-	var vjX = Math.floor(Math.random()*194)+70;
-	var vjY = 0;
+	var cleX = Math.floor(Math.random()*200)+20;
+	var cleY = 0;
 
-	$('#vj').css('top',vjY);
-	$('#vj').css('left',vjX);
+	$('#cle').css('top',cleY);
+	$('#cle').css('left',cleX);
 
 	ok = 1;
 
@@ -50,10 +50,10 @@ $(function() {
 	// Fonction pour surveiller la collision entre les deux voitures :
 	function collision(){
 		pptX = parseInt($('#ppt').css('left'));
-		vjX = parseInt($('#vj').css('left'));
+		cleX = parseInt($('#cle').css('left'));
 		pptY = 390;
-		vjY = parseInt($('#vj').css('top'));
-		if (((pptX > vjX) && (pptX < (vjX+66)) && (pptY > (vjY+120)) && (pptY < (vjY+150)) &&(ok == 1)) || ((pptX > vjX) && (pptX < (vjX+66)) && (pptY > (vjY+120)) && (pptY < (vjY+150)) && (ok == 1))){
+		cleY = parseInt($('#cle').css('top'));
+		if (((pptX > cleX) && (pptX < (cleX+66)) && (pptY > (cleY+120)) && (pptY < (cleY+150)) &&(ok == 1)) || ((pptX > cleX) && (pptX < (cleX+66)) && (pptY > (cleY+120)) && (pptY < (cleY+150)) && (ok == 1))){
 			collision = parseInt($('#info').text()) + 1;
 			$('#info').text(collision);
 			ok = 0;

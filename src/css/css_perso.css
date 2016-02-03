@@ -12,11 +12,13 @@
 	position: relative;
 }
 
-#vj{
+#cle{
+	width: 20px;
+	height: 20px;
 	z-index: 100;
 	position: absolute;
 	top: 10px;
-	left: 48px;
+	left: 200px;
 }
 
 #ppt{
