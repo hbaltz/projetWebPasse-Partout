@@ -1,52 +1,69 @@
+// Variables globales :
+
+var vam = 600; // Vitesse de defilement des murs
+var tap = 320; // Taille des portes 
+var pop = 400; // Aide au positionnement des portes
+var vdf = 360; // Vitesse de defilement du fond
+var hdj = 60; // Taille en pixel en dehors de la taille du jeu
+var tcur = 20; // Taille en px du curseur
+var pom = -10; // Position du mur par défaut
+
+
 $(function() {
 
 	var ok = 1;
-	function deplace(){
+	function obstacle(){
 
-	//Déplacement et apparation des murs :
-	$('#mur').animate({top: '+=600'}, 2500, 'linear', function(){
+		//Déplacement et apparation des murs :
+		$('#mur').animate({top: '+='+vam}, 2500, 'linear', function(){
 
-		var murW = Math.floor(Math.random()*320)+40;
+			var porteW = Math.floor(Math.random()*tap);
 
-		var murX = Math.floor(Math.random()*(400-murW))+30;
-		var murY = 0;
+			var porteX = Math.floor(Math.random()*(pop-porteW));
+			var porteY = 0;
 
-		$('#mur').css('top',murY);
-		$('#mur').css('left',murX);
-		$('#mur').css('width',murX);
+			$('#mur').css('top', pom);
 
-		ok = 1;
+			$('#porte').css('top',porteX);
+			$('#porte').css('left',porteY);
 
-	});
+			$('#porte').css('width',porteW);
 
-	// Animation du fond :
-	$('.fond').animate({
-		top: '+=360'
-		},
-		1000, //Temps du deplacement
-		'linear', // Mode de deplacement
+			ok = 1;
 
-
-		// On relance la fonction une fois que le deplacement est fini :
-		function(){
-		$('.fond').css('top', -360);
-		deplace();
 		});
-	}
+	};
 
-	// Ajout evenement pour faire bouger la voiture rouge a l'aide des touches droite et gauche :
-	$(document).keydown(function(e){
-		if (e.which == 39){
-			pptX = parseInt($('#ppt').css('left'));
-			if (pptX < 320)
-			$('#ppt').css('left', pptX+20);
+	function deplace(){
+		// Animation du fond :
+		$('.fond').animate({
+			top: '+='+vdf
+			},
+			1000, //Temps du deplacement
+			'linear', // Mode de deplacement
+
+
+			// On relance la fonction une fois que le deplacement est fini :
+			function(){
+				$('.fond').css('top', -vdf);
+				deplace();
+				obstacle();
+			});
 		}
 
-		if (e.which == 37){
-			pptX = parseInt($('#ppt').css('left'));
-			if (pptX > 60)
-			$('#ppt').css('left', pptX-20);
-		}
+		// Ajout evenement pour faire bouger la voiture rouge a l'aide des touches droite et gauche :
+		$(document).keydown(function(e){
+			if (e.which == 39){
+				pptX = parseInt($('#ppt').css('left'));
+				if (pptX < tap)
+				$('#ppt').css('left', pptX+tcur);
+			}
+
+			if (e.which == 37){
+				pptX = parseInt($('#ppt').css('left'));
+				if (pptX > hdj)
+				$('#ppt').css('left', pptX-tcur);
+			}
 	});
 
 	// Fonction pour surveiller la collision entre les deux voitures :
