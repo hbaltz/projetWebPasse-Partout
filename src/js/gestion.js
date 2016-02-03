@@ -7,13 +7,28 @@ $(function() {
 
 	$('#cle').animate({top: '+=600'}, 2500, 'linear', function(){
 
-	var cleX = Math.floor(Math.random()*320)+40;
-	var cleY = 0;
+		var cleX = Math.floor(Math.random()*320)+40;
+		var cleY = 0;
 
-	$('#cle').css('top',cleY);
-	$('#cle').css('left',cleX);
+		$('#cle').css('top',cleY);
+		$('#cle').css('left',cleX);
 
-	ok = 1;
+		ok = 1;
+
+	});
+
+	$('#test').animate({top: '+=600'}, 2500, 'linear', function(){
+
+		var testX = Math.floor(Math.random()*320)+40;
+		var testY = 0;
+
+		var testW = Math.floor(Math.random()*320)+40;
+
+		$('#test').css('top',testY);
+		$('#test').css('left',testX);
+		$('#test').css('width',testX);
+
+		ok = 1;
 
 	});
 
@@ -53,11 +68,11 @@ $(function() {
 		cleX = parseInt($('#cle').css('left'));
 		pptY = 390;
 		cleY = parseInt($('#cle').css('top'));
-		if (((pptX > cleX) && (pptX < (cleX+66)) && (pptY > (cleY+120)) && (pptY < (cleY+150)) &&(ok == 1)) || ((pptX > cleX) && (pptX < (cleX+66)) && (pptY > (cleY+120)) && (pptY < (cleY+150)) && (ok == 1))){
+		/* if (((pptX > cleX) && (pptX < (cleX+66)) && (pptY > (cleY+120)) && (pptY < (cleY+150)) &&(ok == 1)) || ((pptX > cleX) && (pptX < (cleX+66)) && (pptY > (cleY+120)) && (pptY < (cleY+150)) && (ok == 1))){
 			collision = parseInt($('#info').text()) + 1;
 			$('#info').text(collision);
 			ok = 0;
-		}  
+		}  */
 	}
 
 	deplace();
