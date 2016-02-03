@@ -1,28 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
-     <!-- Customize CSS -->
-    <link href="css/css_perso.css" rel="stylesheet">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" href="../../favicon.ico">
+         <!-- Customize CSS -->
+        <link href="css/css_perso.css" rel="stylesheet">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+    </head>
+
+    <body>
+        Collisions : <span id="info">0</span>
+
+        <div id="jeu">
+          <img id="fond1" class="fond" src="img/route.png">
+          <img id="fond2" class="fond" src="img/route.png">
+          <img id="vj" src="img/vj.png"> <!-- La voiture jaune -->
+          <img id="vr" src="img/vr.png"> <!-- La voiture rouge -->
+        </div>
 
 
-</head>
 
-<body>
-    Collisions : <span id="info">0</span>
+    </body>
 
-    <div id="jeu">
-      <img id="fond1" class="fond" src="img/route.png">
-      <img id="fond2" class="fond" src="img/route.png">
-      <img id="vj" src="img/vj.png"> <!-- La voiture jaune -->
-      <img id="vr" src="img/vr.png"> <!-- La voiture rouge -->
-    </div>
-
-</body>
+    <script src="js/gestion.js">
+        deplace();
+    </script>
 
 </html>
