@@ -7,6 +7,7 @@
 }
 
 .fond{
+	top: -360px;
 	margin-bottom:-5px;
 	z-index: 10;
 	position: relative;
@@ -30,7 +31,7 @@
 	left: 200px;
 }
 
-#test{
+#mur{
 	width: 0px;
 	height: 10px;
 	z-index: 100;

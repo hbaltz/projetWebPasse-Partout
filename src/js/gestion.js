@@ -3,30 +3,17 @@ $(function() {
 	var ok = 1;
 	function deplace(){
 
-	// Deplacement et apparation de la voiture jaune :
+	//Déplacement et apparation des murs :
+	$('#mur').animate({top: '+=600'}, 2500, 'linear', function(){
 
-	$('#cle').animate({top: '+=600'}, 2500, 'linear', function(){
+		var murW = Math.floor(Math.random()*320)+40;
 
-		var cleX = Math.floor(Math.random()*320)+40;
-		var cleY = 0;
+		var murX = Math.floor(Math.random()*(400-murW))+30;
+		var murY = 0;
 
-		$('#cle').css('top',cleY);
-		$('#cle').css('left',cleX);
-
-		ok = 1;
-
-	});
-
-	$('#test').animate({top: '+=600'}, 2500, 'linear', function(){
-
-		var testX = Math.floor(Math.random()*320)+40;
-		var testY = 0;
-
-		var testW = Math.floor(Math.random()*320)+40;
-
-		$('#test').css('top',testY);
-		$('#test').css('left',testX);
-		$('#test').css('width',testX);
+		$('#mur').css('top',murY);
+		$('#mur').css('left',murX);
+		$('#mur').css('width',murX);
 
 		ok = 1;
 
