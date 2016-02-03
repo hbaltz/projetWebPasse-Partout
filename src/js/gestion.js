@@ -25,6 +25,7 @@ $(function() {
 			$('#mur').css('top', pom);
 
 			$('#porte').css('width',porteW);
+			$('#porte').css('margin-left',150);
 
 			ok = 1;
 

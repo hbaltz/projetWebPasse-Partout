@@ -41,11 +41,11 @@
 	background-color: black;
 }
 
-#mur.porte{
-	width: 0px;
+#mur #porte{
+	width: 20px;
 	height: 10px;
-	z-index: 110;
-	top: 10px;
-	left: 200px;
+	/*z-index: 110;*/
+	/*top: 10px;*/
+	/*left: 200px;*/
 	background-color: white;
 }
