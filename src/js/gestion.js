@@ -4,7 +4,7 @@ var tm = 2500; // Temps de déplacement des murs
 var tf = 1000; // Temps de déplacement du fond
 
 var vam = 500; // Vitesse de defilement des murs
-var vdf = 200; // Vitesse de defilement du fond
+var vdf = 360; // Vitesse de defilement du fond
 
 var am = 0; // Pour faire accélere les murs
 var af = 0;	// Pour faire accélere le fond
@@ -48,8 +48,10 @@ $(function() {
 
 	function deplace(){
 		// Gestion de l'accélération :
+		/*
 		vdf += af;
 		af += 1;
+		*/
 
 		// Animation du fond :
 		$('.fond').animate({
@@ -61,7 +63,7 @@ $(function() {
 
 			// On relance la fonction une fois que le deplacement est fini :
 			function(){
-				$('.fond').css('top', -360);
+				$('.fond').css('top', -vdf);
 				deplace();
 				obstacle();
 			});
