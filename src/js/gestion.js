@@ -1,14 +1,17 @@
 // Variables globales :
 
 var vam = 600; // Vitesse de defilement des murs
-var tap = 120; // Taille des portes maximales
-var pm = 250; // Aide au positionnement des portes
-var pop = 400; // Aide au positionnement des murs
 var vdf = 360; // Vitesse de defilement du fond
+
+var tap = 120; // Taille des portes maximales
+var pop = 400; // Aide au positionnement des murs
+var pom = -10; // Position du mur par défaut
+var pm = 250; // Aide au positionnement des portes
+
 var hdj = 60; // Taille en pixel en dehors de la taille du jeu
 var zdj = 320; // Taille en pixel en dehors de la taille du jeu
 var tcur = 20; // Taille en px du curseur
-var pom = -10; // Position du mur par défaut
+
 
 
 $(function() {
@@ -67,15 +70,18 @@ $(function() {
 
 	// Fonction pour surveiller la collision entre les deux voitures :
 	function collision(){
-		pptX = parseInt($('#ppt').css('left'));
-		cleX = parseInt($('#cle').css('left'));
-		pptY = 390;
-		cleY = parseInt($('#cle').css('top'));
-		/* if (((pptX > cleX) && (pptX < (cleX+66)) && (pptY > (cleY+120)) && (pptY < (cleY+150)) &&(ok == 1)) || ((pptX > cleX) && (pptX < (cleX+66)) && (pptY > (cleY+120)) && (pptY < (cleY+150)) && (ok == 1))){
+		
+		pptY = parseInt($('#ppt').css('top'));
+		pptH = parseInt($('#ppt').css('height'));
+
+		murY = parseInt($('#mur').css('top'));
+		murH = parseInt($('#mur').css('height'));
+
+		if (intersection(pptY, pptH, murY, murH, ok)){
 			collision = parseInt($('#info').text()) + 1;
 			$('#info').text(collision);
 			ok = 0;
-		}  */
+		}  
 	}
 
 	deplace();
