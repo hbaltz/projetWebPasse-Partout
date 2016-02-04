@@ -71,25 +71,28 @@ $(function() {
 	// Fonction pour surveiller la collision entre les deux voitures :
 	function collision(){
 
-		pptX = parseInt($('#ppt').css('left'));
 		pptY = parseInt($('#ppt').css('top'));
 		pptH = parseInt($('#ppt').css('height'));
-		pptW = parseInt($('#ppt').css('width'));
 
-		murX = parseInt($('#mur').css('left'));
 		murY = parseInt($('#mur').css('top'));
 		murH = parseInt($('#mur').css('height'));
-
-		porteX = parseInt($('#porte').css('margin-left')) + murX;
+		
 		porteY = parseInt($('#mur').css('top'));
 		porteH = parseInt($('#porte').css('height'));
-		porteW = parseInt($('#porte').css('width'));
 
 		testMur = intersection(pptY, pptH, murY, murH, ok);
 		
 		if (testMur){
+			pptX = parseInt($('#ppt').css('left'));
+			pptW = parseInt($('#ppt').css('width'));
+
+			murX = parseInt($('#mur').css('left'));
+
+			porteX = parseInt($('#porte').css('margin-left')) + murX;
+			porteW = parseInt($('#porte').css('width'));
+
 			testPor = dansPorte(pptX, pptW, porteX, porteW);
-			
+
 			if(!testPor){
 				collision = parseInt($('#info').text()) + 1;
 				$('#info').text(collision);
