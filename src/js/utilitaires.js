@@ -1,3 +1,7 @@
-function intersection(yCur, hCur, yMur, hMur, ok) {
-	return ((yMur+hMur < yCur && yMur > yCur+hCur) || (yMur+hMur > yCur && hMur < yCur+hCur) && ok ==1);
+function intersection(y1, h1, y2, h2, ok) {
+	return ((y2+h2 < y1 && y2 > y1+h1) || (y2+h2 > y1 && h2 < y1+h1) && ok ==1);
+}
+
+function dansPorte(x1, w1, x2, w2) {
+	return ((x1 + w1 >= x2 && x1 + w1 <= x2+w2));
 }

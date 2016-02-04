@@ -12,7 +12,7 @@ var hdj = 60; // Taille en pixel en dehors de la taille du jeu
 var zdj = 320; // Taille en pixel en dehors de la taille du jeu
 var tcur = 20; // Taille en px du curseur
 
-
+var pptX, pptY, pptH, pptW, murX, murY, murH, porteX, porteY, porteH, porteW, testPor, testMur; 
 
 $(function() {
 
@@ -70,17 +70,31 @@ $(function() {
 
 	// Fonction pour surveiller la collision entre les deux voitures :
 	function collision(){
-		
+
+		pptX = parseInt($('#ppt').css('left'));
 		pptY = parseInt($('#ppt').css('top'));
 		pptH = parseInt($('#ppt').css('height'));
+		pptW = parseInt($('#ppt').css('width'));
 
+		murX = parseInt($('#mur').css('left'));
 		murY = parseInt($('#mur').css('top'));
 		murH = parseInt($('#mur').css('height'));
 
-		if (intersection(pptY, pptH, murY, murH, ok)){
-			collision = parseInt($('#info').text()) + 1;
-			$('#info').text(collision);
-			ok = 0;
+		porteX = parseInt($('#porte').css('margin-left')) + murX;
+		porteY = parseInt($('#mur').css('top'));
+		porteH = parseInt($('#porte').css('height'));
+		porteW = parseInt($('#porte').css('width'));
+
+		testMur = intersection(pptY, pptH, murY, murH, ok);
+		
+		if (testMur){
+			testPor = dansPorte(pptX, pptW, porteX, porteW);
+			
+			if(!testPor){
+				collision = parseInt($('#info').text()) + 1;
+				$('#info').text(collision);
+				ok = 0;
+			}
 		}  
 	}
 
