@@ -1,7 +1,13 @@
 // Variables globales :
 
-var vam = 600; // Vitesse de defilement des murs
-var vdf = 360; // Vitesse de defilement du fond
+var tm = 2500; // Temps de déplacement des murs
+var tf = 1000; // Temps de déplacement du fond
+
+var vam = 500; // Vitesse de defilement des murs
+var vdf = 200; // Vitesse de defilement du fond
+
+var am = 0; // Pour faire accélere les murs
+var af = 0;	// Pour faire accélere le fond
 
 var tap = 120; // Taille des portes maximales
 var pop = 400; // Aide au positionnement des murs
@@ -18,9 +24,12 @@ $(function() {
 
 	var ok = 1;
 	function obstacle(){
+		// Gestion de l'accélération :
+		vam += am;
+		am += 1;
 
 		//Déplacement et apparation des murs :
-		$('#mur').animate({top: '+=' + vam}, 2500, 'linear', function(){
+		$('#mur').animate({top: '+=' + vam}, tm, 'linear', function(){
 
 			var porteW = Math.floor(Math.random()*tap)+20;
 
@@ -32,28 +41,33 @@ $(function() {
 			$('#porte').css('margin-left',porteX);
 
 			ok = 1;
+			
 
 		});
 	};
 
 	function deplace(){
+		// Gestion de l'accélération :
+		vdf += af;
+		af += 1;
+
 		// Animation du fond :
 		$('.fond').animate({
 			top: '+='+vdf
 			},
-			1000, //Temps du deplacement
+			tf, //Temps du deplacement
 			'linear', // Mode de deplacement
 
 
 			// On relance la fonction une fois que le deplacement est fini :
 			function(){
-				$('.fond').css('top', -vdf);
+				$('.fond').css('top', -360);
 				deplace();
 				obstacle();
 			});
 		}
 
-		// Ajout evenement pour faire bouger la voiture rouge a l'aide des touches droite et gauche :
+		// Ajout evenement pour faire bouger passe-partout a l'aide des touches droite et gauche :
 		$(document).keydown(function(e){
 			if (e.which == 39){
 				pptX = parseInt($('#ppt').css('left'));
@@ -68,7 +82,7 @@ $(function() {
 			}
 	});
 
-	// Fonction pour surveiller la collision entre les deux voitures :
+	// Fonction pour surveiller la collision entre passe-partout et les murs :
 	function collision(){
 
 		pptY = parseInt($('#ppt').css('top'));
@@ -102,5 +116,5 @@ $(function() {
 	}
 
 	deplace();
-	setInterval(collision, 1); // Verification des collisons toutes les 20ms
+	setInterval(collision, 1); // Verification des collisons toutes les 1ms
 }); 
