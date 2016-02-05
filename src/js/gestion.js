@@ -24,7 +24,7 @@ var hdj = 60; // Taille en pixel en dehors de la taille du jeu
 var zdj = 320; // Taille en pixel en dehors de la taille du jeu
 var tcur = 20; // Taille en px du curseur
 
-var rfc = 1; // Temps sépérant la vérification des collisions
+var rfc = 1; // Temps séparant la vérification des collisions
 
 var pptX, pptY, pptH, pptW, murX, murY, murH, porteX, porteY, porteH, porteW, testPor, testMur;
 var score; 
@@ -39,6 +39,13 @@ $( "#lancer_partie").click(function(e){
 
 // Function pour initialiser la partie :
 function debut_partie(){
+	//Réinisiallition des variables au cas où ce ne serai pas la première partie (bouton resseayer) :
+	vam = 500;
+	vdf = 360;
+	am = 0;
+	af = 0;
+
+	// Initialisation du jeu :
 	$('#partie').html('<p> Score : <span id="score">0</span> </p>');
 	$('<div id="jeu">').appendTo('#partie');
 	$('<img id="fond1" class="fond" src="img/route.png"><img id="fond2" class="fond" src="img/route.png">').appendTo('#jeu');
