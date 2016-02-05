@@ -124,6 +124,7 @@ $(function() {
 
 	function finJeu(){
 		$('#partie').hide();
+		$('#partie').html('');
 		$('#fin').show();
 		$('#inf_score').text(score);
 	}
