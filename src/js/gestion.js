@@ -24,9 +24,12 @@ var pptX, pptY, pptH, pptW, murX, murY, murH, porteX, porteY, porteH, porteW, te
 var score; 
 var ok = 1;
 
-window.onload = function() {
+// Pour lancer une partie :
+$( "#lancer_partie").click(function(e){
+	$('#debut').hide();
+	$('#partie').show();
 	debut_partie();
-}
+});
 
 // Function pour initialiser la partie :
 function debut_partie(){
