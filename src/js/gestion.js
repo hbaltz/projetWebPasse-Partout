@@ -18,6 +18,8 @@ var hdj = 60; // Taille en pixel en dehors de la taille du jeu
 var zdj = 320; // Taille en pixel en dehors de la taille du jeu
 var tcur = 20; // Taille en px du curseur
 
+var rfc = 0.1; // Temps sépérant la vérification des collisions
+
 var pptX, pptY, pptH, pptW, murX, murY, murH, porteX, porteY, porteH, porteW, testPor, testMur; 
 
 $(function() {
@@ -113,10 +115,14 @@ $(function() {
 				collision = parseInt($('#info').text()) + 1;
 				$('#info').text(collision);
 				ok = 0;
+			} else {
+				score = parseInt($('#score').text()) + 1;
+				$('#score').text(score);
+				ok = 0;
 			}
 		}  
 	}
 
 	deplace();
-	setInterval(collision, 1); // Verification des collisons toutes les 1ms
+	setInterval(collision, rfc); // Verification des collisons toutes les 1ms
 }); 
