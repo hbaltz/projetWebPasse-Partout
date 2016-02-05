@@ -1,3 +1,9 @@
+// ! Nécéssite jQuery
+
+/**
+Gestion du jeu avec Passe-partout
+**/
+
 // Variables globales :
 
 var tm = 2500; // Temps de déplacement des murs
@@ -33,7 +39,7 @@ $( "#lancer_partie").click(function(e){
 
 // Function pour initialiser la partie :
 function debut_partie(){
-	$('#partie').html('<p> Collisions : <span id="info">0</span> </p><p> Score : <span id="score">0</span> </p>');
+	$('#partie').html('<p> Score : <span id="score">0</span> </p>');
 	$('<div id="jeu">').appendTo('#partie');
 	$('<img id="fond1" class="fond" src="img/route.png"><img id="fond2" class="fond" src="img/route.png">').appendTo('#jeu');
 	$('<img id="ppt" src="img/ppt.png"> <div id = "mur"></div>').appendTo('#jeu');
@@ -61,7 +67,6 @@ function obstacle(){
 		$('#porte').css('margin-left',porteX);
 
 		ok = 1;
-		
 	});
 };
 
