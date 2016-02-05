@@ -18,9 +18,10 @@ var hdj = 60; // Taille en pixel en dehors de la taille du jeu
 var zdj = 320; // Taille en pixel en dehors de la taille du jeu
 var tcur = 20; // Taille en px du curseur
 
-var rfc = 0.1; // Temps sépérant la vérification des collisions
+var rfc = 1; // Temps sépérant la vérification des collisions
 
-var pptX, pptY, pptH, pptW, murX, murY, murH, porteX, porteY, porteH, porteW, testPor, testMur; 
+var pptX, pptY, pptH, pptW, murX, murY, murH, porteX, porteY, porteH, porteW, testPor, testMur;
+var score; 
 
 $(function() {
 
@@ -111,18 +112,22 @@ $(function() {
 
 			testPor = dansPorte(pptX, pptW, porteX, porteW);
 
-			if(!testPor){
-				collision = parseInt($('#info').text()) + 1;
-				$('#info').text(collision);
-				ok = 0;
-			} else {
+			if(testPor){
 				score = parseInt($('#score').text()) + 1;
 				$('#score').text(score);
 				ok = 0;
+			} else {
+				finJeu();
 			}
 		}  
 	}
 
+	function finJeu(){
+		$('#partie').hide();
+		$('#fin').show();
+		$('#inf_score').text(score);
+	}
+
 	deplace();
-	setInterval(collision, rfc); // Verification des collisons toutes les 1ms
+	setInterval(collision, rfc); // Verification des collisons toutes les rfc ms
 }); 
