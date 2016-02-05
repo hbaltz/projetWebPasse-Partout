@@ -24,7 +24,7 @@ var hdj = 60; // Taille en pixel en dehors de la taille du jeu
 var zdj = 320; // Taille en pixel en dehors de la taille du jeu
 var tcur = 20; // Taille en px du curseur
 
-var rfc = 1; // Temps séparant la vérification des collisions
+var rfc = 0.05; // Temps séparant la vérification des collisions
 
 var pptX, pptY, pptH, pptW, murX, murY, murH, porteX, porteY, porteH, porteW, testPor, testMur;
 var score; 
@@ -51,8 +51,10 @@ function debut_partie(){
 	$('<img id="fond1" class="fond" src="img/route.png"><img id="fond2" class="fond" src="img/route.png">').appendTo('#jeu');
 	$('<img id="ppt" src="img/ppt.png"> <div id = "mur"></div>').appendTo('#jeu');
 	$('<div id = "porte">').appendTo('#mur');
+
+	// Lancement du jeu :
 	deplace();
-	setInterval(collision, rfc); // Verification des collisons toutes les rfc ms
+	setInterval(collision, rfc);
 }
 
 // Gestion des obstacles :
@@ -64,7 +66,7 @@ function obstacle(){
 	//Déplacement et apparation des murs :
 	$('#mur').animate({top: '+=' + vam}, tm, 'linear', function(){
 
-		var porteW = Math.floor(Math.random()*tap)+20;
+		var porteW = Math.floor(Math.random()*tap)+25;
 
 		var porteX = Math.floor(Math.random()*pm);
 
@@ -127,14 +129,14 @@ function collision(){
 
 		testPor = dansPorte(pptX, pptW, porteX, porteW);
 
-		if(testPor){
-			score = parseInt($('#score').text()) + 1;
-			$('#score').text(score);
-			ok = 0;
-		} else {
+		if(!testPor){
 			finJeu();
-		}
-	}  
+		} 
+
+		score = parseInt($('#score').text()) + 1;
+		$('#score').text(score);
+		ok = 0;
+	}
 }
 
 // Gestion du game over :
