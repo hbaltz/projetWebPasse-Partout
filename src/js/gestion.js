@@ -27,7 +27,8 @@ var tcur = 20; // Taille en px du curseur
 var rfc = 0.05; // Temps séparant la vérification des collisions
 
 var pptX, pptY, pptH, pptW, murX, murY, murH, porteX, porteY, porteH, porteW, testPor, testMur;
-var score; 
+var score;
+var X; 
 var ok = 1;
 
 // Pour lancer une partie :
@@ -158,6 +159,8 @@ $( "#nouvelle_partie").click(function(e){
 Gestion des déplacement
 **/
 
+// Au clavier :
+
 // Ajout evenement pour faire bouger passe-partout a l'aide des touches droite et gauche :
 $(document).keydown(function(e){
 	if (e.which == 39){
@@ -170,5 +173,15 @@ $(document).keydown(function(e){
 		pptX = parseInt($('#ppt').css('left'));
 		if (pptX > hdj)
 		$('#ppt').css('left', pptX - tcur);
+	}
+});
+
+// A la souris :
+
+// Ajout evenement pour faire bouger passe-partout a l'aide de la souris :
+$('#partie').mousemove(function(e){
+	X = e.pageX;
+	if (X < zdj && X > hdj){
+		$('#ppt').css('left', X);
 	}
 });
