@@ -38,12 +38,12 @@
 	position: absolute;
 	top: -15px;
 	left: 25px;
-	background-color: black;
+	background: black url("../img/mur.png");
 }
 
 #mur #porte{
 	width: 40px;
 	height: 15px;
 	margin-left: 180px;
-	background-color: white;
+	background: white url("../img/porte.png");
 }

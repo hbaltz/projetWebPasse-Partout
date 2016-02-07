@@ -27,7 +27,7 @@ var tcur = 20; // Taille en px du curseur
 var rfc = 0.05; // Temps séparant la vérification des collisions
 
 var pptX, pptY, pptH, pptW, murX, murY, murH, porteX, porteY, porteH, porteW, testPor, testMur;
-var score=0;
+var score=0; // Stocke le score du joueur
 var X; 
 var ok = 1;
 
