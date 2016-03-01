@@ -56,7 +56,7 @@ function debut_partie(){
 	$('<img id="fond1" class="fond" src="img/route.png"><img id="fond2" class="fond" src="img/route.png">').appendTo('#jeu');
 	$('<img id="ppt" src="img/ppt.png">').appendTo('#jeu');
 	$('<div class = "mur"></div>').appendTo('#jeu');
-	$('<div id = "porte"></div>').appendTo('.mur');
+	$('<div class = "porte"></div>').appendTo('.mur');
 	
 	// Lancement du jeu :
 	deplace();
@@ -81,8 +81,8 @@ function obstacle(){
 
 			$('.mur').css('top', -15);
 
-			$('.mur #porte').css('width',porteW);
-			$('.mur #porte').css('margin-left',porteX);
+			$('.mur .porte').css('width',porteW);
+			$('.mur .porte').css('margin-left',porteX);
 
 			ok = 1;
 		});
@@ -116,7 +116,6 @@ function deplace(){
 
 // Fonction pour surveiller la collision entre passe-partout et les murs :
 function collision(){
-
 	pptY = parseInt($('#ppt').css('top'));
 	pptH = parseInt($('#ppt').css('height'));
 
@@ -124,7 +123,7 @@ function collision(){
 	murH = parseInt($('.mur').css('height'));
 	
 	porteY = parseInt($('.mur').css('top'));
-	porteH = parseInt($('.mur #porte').css('height'));
+	porteH = parseInt($('.mur .porte').css('height'));
 
 	testMur = intersection(pptY, pptH, murY, murH, ok);
 	
@@ -134,8 +133,8 @@ function collision(){
 
 		murX = parseInt($('.mur').css('left'));
 
-		porteX = parseInt($('.mur #porte').css('margin-left')) + murX;
-		porteW = parseInt($('.mur #porte').css('width'));
+		porteX = parseInt($('.mur .porte').css('margin-left')) + murX;
+		porteW = parseInt($('.mur .porte').css('width'));
 
 		testPor = dansPorte(pptX, pptW, porteX, porteW);
 
