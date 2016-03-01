@@ -25,7 +25,7 @@ var zdj = 320; // Taille en pixel en dehors de la taille du jeu
 var tcur = 20; // Taille en px du curseur
 
 var rfc = 0.05; // Temps séparant la vérification des collisions
-var rfo = 500; // Temps séparant la demande d'apparition des obstacles
+var rfo = 100; // Temps séparant la demande d'apparition des obstacles
 var alea;
 
 var pptX, pptY, pptH, pptW, murX, murY, murH, porteX, porteY, porteH, porteW, testPor, testMur;
@@ -67,7 +67,6 @@ function debut_partie(){
 // Gestion des obstacles :
 function obstacle(){
 	alea = Math.floor((Math.random() * 10) + 1); 
-	console.log(alea);
 	if(alea == 7){
 		// Gestion de l'accélération :
 		vam += am;
@@ -125,7 +124,7 @@ function collision(){
 	murH = parseInt($('.mur').css('height'));
 	
 	porteY = parseInt($('.mur').css('top'));
-	porteH = parseInt($('#porte').css('height'));
+	porteH = parseInt($('.mur #porte').css('height'));
 
 	testMur = intersection(pptY, pptH, murY, murH, ok);
 	
@@ -135,8 +134,8 @@ function collision(){
 
 		murX = parseInt($('.mur').css('left'));
 
-		porteX = parseInt($('#porte').css('margin-left')) + murX;
-		porteW = parseInt($('#porte').css('width'));
+		porteX = parseInt($('.mur #porte').css('margin-left')) + murX;
+		porteW = parseInt($('.mur #porte').css('width'));
 
 		testPor = dansPorte(pptX, pptW, porteX, porteW);
 
