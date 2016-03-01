@@ -25,11 +25,15 @@ var zdj = 320; // Taille en pixel en dehors de la taille du jeu
 var tcur = 20; // Taille en px du curseur
 
 var rfc = 0.05; // Temps séparant la vérification des collisions
+var rfo = 500; // Temps séparant la demande d'apparition des obstacles
+var alea;
 
 var pptX, pptY, pptH, pptW, murX, murY, murH, porteX, porteY, porteH, porteW, testPor, testMur;
 var score=0; // Stocke le score du joueur
 var X; 
 var ok = 1;
+
+var murLib = '#mur';
 
 // Pour lancer une partie :
 $( "#lancer_partie").click(function(e){
@@ -50,35 +54,42 @@ function debut_partie(){
 	$('#partie').html('<p> Score : <span id="score">0</span> </p>');
 	$('<div id="jeu">').appendTo('#partie');
 	$('<img id="fond1" class="fond" src="img/route.png"><img id="fond2" class="fond" src="img/route.png">').appendTo('#jeu');
-	$('<img id="ppt" src="img/ppt.png"> <div id = "mur"></div>').appendTo('#jeu');
-	$('<div id = "porte">').appendTo('#mur');
-
+	$('<img id="ppt" src="img/ppt.png">').appendTo('#jeu');
+	$('<div class = "mur"></div>').appendTo('#jeu');
+	$('<div id = "porte"></div>').appendTo('.mur');
+	
 	// Lancement du jeu :
 	deplace();
 	setInterval(collision, rfc);
+	setInterval(obstacle, rfo);
 }
 
 // Gestion des obstacles :
 function obstacle(){
-	// Gestion de l'accélération :
-	vam += am;
-	am += 1;
+	alea = Math.floor((Math.random() * 10) + 1); 
+	console.log(alea);
+	if(alea == 7){
+		// Gestion de l'accélération :
+		vam += am;
+		am += 1;
 
-	//Déplacement et apparation des murs :
-	$('#mur').animate({top: '+=' + vam}, tm, 'linear', function(){
+		//Déplacement et apparation des murs :
+		$('.mur').animate({top: '+=' + vam}, tm, 'linear', function(){
 
-		var porteW = Math.floor(Math.random()*tap)+25;
+			var porteW = Math.floor(Math.random()*tap)+25;
 
-		var porteX = Math.floor(Math.random()*pm);
+			var porteX = Math.floor(Math.random()*pm);
 
-		$('#mur').css('top', 0);
+			$('.mur').css('top', -15);
 
-		$('#porte').css('width',porteW);
-		$('#porte').css('margin-left',porteX);
+			$('.mur #porte').css('width',porteW);
+			$('.mur #porte').css('margin-left',porteX);
 
-		ok = 1;
-	});
+			ok = 1;
+		});
+	}
 };
+
 
 // Gestion du déplacement du fond
 function deplace(){
@@ -100,7 +111,6 @@ function deplace(){
 		function(){
 			$('.fond').css('top', -vdf);
 			deplace();
-			obstacle();
 		}
 	);
 }
@@ -111,10 +121,10 @@ function collision(){
 	pptY = parseInt($('#ppt').css('top'));
 	pptH = parseInt($('#ppt').css('height'));
 
-	murY = parseInt($('#mur').css('top'));
-	murH = parseInt($('#mur').css('height'));
+	murY = parseInt($('.mur').css('top'));
+	murH = parseInt($('.mur').css('height'));
 	
-	porteY = parseInt($('#mur').css('top'));
+	porteY = parseInt($('.mur').css('top'));
 	porteH = parseInt($('#porte').css('height'));
 
 	testMur = intersection(pptY, pptH, murY, murH, ok);
@@ -123,7 +133,7 @@ function collision(){
 		pptX = parseInt($('#ppt').css('left'));
 		pptW = parseInt($('#ppt').css('width'));
 
-		murX = parseInt($('#mur').css('left'));
+		murX = parseInt($('.mur').css('left'));
 
 		porteX = parseInt($('#porte').css('margin-left')) + murX;
 		porteW = parseInt($('#porte').css('width'));
@@ -149,7 +159,7 @@ function finJeu(){
 }
 
 // Pour relancer une partie :
-$( "#nouvelle_partie").click(function(e){
+$("#nouvelle_partie").click(function(e){
 	$('#fin').hide();
 	$('#partie').show();
 	debut_partie();
