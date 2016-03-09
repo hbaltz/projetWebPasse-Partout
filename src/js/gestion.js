@@ -1,5 +1,7 @@
 // ! Nécéssite jQuery
 
+//TODO : Gestion alétoire dans l'apparition des murs.
+
 /**
 Gestion du jeu avec Passe-partout
 **/
@@ -44,7 +46,7 @@ $( "#lancer_partie").click(function(e){
 
 // Function pour initialiser la partie :
 function debut_partie(){
-	//Réinisiallition des variables au cas où ce ne serai pas la première partie (bouton resseayer) :
+	//Réinitialisation des variables au cas où ce ne serais pas la première partie (bouton resseayer) :
 	vam = 500;
 	vdf = 360;
 	am = 0;
@@ -121,9 +123,6 @@ function collision(){
 
 	murY = parseInt($('.mur').css('top'));
 	murH = parseInt($('.mur').css('height'));
-	
-	porteY = parseInt($('.mur').css('top'));
-	porteH = parseInt($('.mur .porte').css('height'));
 
 	testMur = intersection(pptY, pptH, murY, murH, ok);
 	
